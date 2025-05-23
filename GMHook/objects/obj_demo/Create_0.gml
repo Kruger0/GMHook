@@ -1,5 +1,5 @@
 
-#macro WEBHOOK_URL "https://discord.com/api/webhooks/1374202755534557284/cV-1Krenl3_QMs-L8vLFdEFvuHbPNJmv5ljK9G569TglCImLFqy8SwCAh8uCVLbLesyv"
+#macro WEBHOOK_URL "https://discord.com/api/webhooks/1374805471780802662/Mn75drFiI1Y7YwhmR6JXlZqcQbmGUmNOiTYAu9-5gLibJimikKFOcxrqWHQK-ZENuelT"
 
 surf	= -1
 stroke	= 8
@@ -29,42 +29,40 @@ send = function() {
 dbg_button("Send Drawing!", ref_create(self, "send"))
 
 
-//embed_demo = new DiscordEmbed()
-//	.SetTitle("Title")
-//	.SetDescription("Text message. You can use Markdown here. *Italic* **bold** __underline__ ~~strikeout~~ [hyperlink](https://google.com) `code`")
-//	.SetColor(#E8D44F)
-//	.SetURL("https://google.com/")
-//	.SetAuthor("Birdie♫", "https://i.imgur.com/R66g1Pe.jpg", "https://www.reddit.com/r/cats/")
-//	.SetFields([
-//		{
-//          "name": "Text",
-//          "value": "More text",
-//          "inline": true
-//        },
-//        {
-//          "name": "Even more text",
-//          "value": "Yup",
-//          "inline": true
-//        },
-//        {
-//          "name": "Use `\"inline\": true` parameter, if you want to display fields in the same line.",
-//          "value": "okay..."
-//        },
-//	])
-//	.AddField("Thanks!", "You're welcome :wink:")
-//	.SetThumbnail("https://i.imgur.com/CaQK26p.jpeg")
-//	.SetImage("https://i.imgur.com/ZGPxFN2.jpg")
-//	.SetFooter("Woah! So cool! :smirk:", "https://i.imgur.com/fKL31aD.jpg")
-//	.SetTimestamp("2015-12-31T12:00:00.000Z")
+embed_demo = new DiscordEmbed()
+	.SetTitle("Title")
+	.SetDescription("Text message. You can use Markdown here. *Italic* **bold** __underline__ ~~strikeout~~ [hyperlink](https://google.com) `code`")
+	.SetColor(#E8D44F)
+	.SetURL("https://google.com/")
+	.SetAuthor("Birdie♫", "https://i.imgur.com/R66g1Pe.jpg", "https://www.reddit.com/r/cats/")
+	.SetFields([
+		{
+          "name": "Text",
+          "value": "More text",
+          "inline": true
+        },
+        {
+          "name": "Even more text",
+          "value": "Yup",
+          "inline": true
+        },
+        {
+          "name": "Use `\"inline\": true` parameter, if you want to display fields in the same line.",
+          "value": "okay..."
+        },
+	])
+	.AddField("Thanks!", "You're welcome :wink:")
+	.SetThumbnail("https://i.imgur.com/CaQK26p.jpeg")
+	.SetImage("https://i.imgur.com/ZGPxFN2.jpg")
+	.SetFooter("Woah! So cool!", "https://i.imgur.com/fKL31aD.jpg")
+	.SetTimestamp("2015-12-31T12:00:00.000Z")
 
-//webhook_embed = new DiscordWebhook(WEBHOOK_URL) 
-//	.SetUser("Webhook", "https://i.imgur.com/4M34hi2.png")
-//	.SetContent("Text message. Up to 2000 characters.")
-//	.AddEmbed(embed_demo)
-//	.Execute()
-//	//.Delete()
-//	//.SetContent("Uh that was edited!")
-//	//.Edit()
+webhook_embed = new DiscordWebhook(WEBHOOK_URL) 
+	.SetUser("Webhook", "https://i.imgur.com/4M34hi2.png")
+	.SetContent("Text message. Up to 2000 characters.")
+	.AddEmbed(embed_demo)
+	.Execute()
+
 
 
 
@@ -76,3 +74,6 @@ webhook_poll = new DiscordWebhook(WEBHOOK_URL)
 	.SetContent("Hello Discord")
 	//.AddPoll(poll_demo)
 	//.Execute()
+
+var json_map = ds_map_create();
+    
