@@ -128,3 +128,8 @@ webhook.SetUser("GameBot", "https://example.com/bot_avatar.png")
 
 ### DiscordPoll Methods
 - `AddAnswer(text, emoji)` - Add poll option with optional emoji
+
+## Related links
+- [Webhook Resource | Documentation | Discord Developer Portal](https://discord.com/developers/docs/resources/webhook)
+- [Introduction - Discord Webhooks Guide](https://birdie0.github.io/discord-webhooks-guide/index.html)
+- [Embed Visualizer](https://leovoel.github.io/embed-visualizer/)
