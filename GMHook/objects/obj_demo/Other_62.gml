@@ -1,2 +1,0 @@
-
-webhook_poll.Async()
