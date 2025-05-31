@@ -96,6 +96,13 @@ webhook.SetUser("GameBot", "https://example.com/bot_avatar.png")
        .Execute();
 ```
 
+### Webhook Restrictions
+- **No reaction detection**: Webhooks cannot detect when users react to messages they send
+- **No incoming events**: Webhooks are send-only and cannot listen for Discord events  
+- **No self-reactions**: Webhooks cannot add reactions to their own messages
+
+For interactive features requiring user input detection, consider using a Discord bot alongside webhooks.
+
 ## Complete API Reference
 
 ### DiscordWebhook Methods
