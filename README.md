@@ -8,7 +8,7 @@ GMHook is a Discord Webhook integration system made for GameMaker, implemented w
 2. Create a webhook instance and start sending messages:
    ```gml
    // Create webhook instance
-   webhook = new DiscordWebhook("https://discord.com/api/webhooks/YOUR_WEBHOOK_URL");
+   webhook = new DiscordWebhook("YOUR_WEBHOOK_URL");
    
    // Send a simple message
    webhook.SetContent("Hello from GameMaker!")
