@@ -7,9 +7,6 @@
     []=============================================[]
 */
 
-//hook = new DiscordWebhook("gghjghj")
-//hook.SetUser().SetContent()
-
 ///@desc Instantiates a Webhook object that can be configured and executed.
 ///@arg {String} url The webhook url as a string
 function DiscordWebhook(url) constructor {
@@ -430,18 +427,3 @@ function DiscordPoll(text, duration = 24, multiselect = false) constructor {
         return self;
     }
 }
-
-#macro WEBHOOK_URL "https://discord.com/api/webhooks/1375319109251629127/Q5vYMgwZW0_nG39LMe8zeuqU4R3KRdRnt3a01cJNx9YT61747O8U9jlvUYCDBNOzYKDV"
-
-
-emb = new DiscordEmbed()
-    .SetColor(c_lime)
-    .AddField("Status", "Online 🟢", false)
-
-webhook = new DiscordWebhook(WEBHOOK_URL)
-    .SetContent("# Server Check")
-    .AddEmbed(emb)
-    .Execute()
-
-emb.SetColor(c_red)
-webhook.SetEmbeds([]).AddEmbed(emb)
