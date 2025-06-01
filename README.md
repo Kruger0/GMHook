@@ -1,6 +1,6 @@
 <div align="center">
   <img src="https://github.com/user-attachments/assets/d29423cd-4bb0-44e0-b8ec-814621924429" alt="GMHook Icon" width="256">
-  <h1>GMHook 1.0.0</h1>
+  <h1>GMHook 1.1.0</h1>
 </div>
 GMHook is a Discord Webhook integration system made for GameMaker, implemented with complete message, embed, file and poll support
 
@@ -100,6 +100,21 @@ webhook.SetUser("GameBot", "https://example.com/bot_avatar.png")
        .Execute();
 ```
 
+### Batch Operations
+Set multiple embeds or fields at once:
+```gml
+// Set multiple embeds at once
+embeds_array = [embed1, embed2, embed3];
+webhook.SetEmbeds(embeds_array);
+
+// Set multiple fields for an embed
+fields_array = [
+    {name: "Field 1", value: "Value 1", inline: true},
+    {name: "Field 2", value: "Value 2", inline: false}
+];
+embed.SetFields(fields_array);
+```
+
 ### Webhook Restrictions
 - **No reaction detection**: Webhooks cannot detect when users react to messages they send
 - **No incoming events**: Webhooks are send-only and cannot listen for Discord events  
@@ -110,9 +125,11 @@ For interactive features requiring user input detection, consider using a Discor
 ## Complete API Reference
 
 ### DiscordWebhook Methods
+- `SetURL(url)` - Change the webhook URL after creation
 - `SetUser(username, avatar_url)` - Set custom webhook identity
 - `SetContent(content)` - Set message text content
 - `SetPayload(payload)` - Set raw payload as a struct or a valid JSON string
+- `SetEmbeds(embeds)` - Set an array of embeds at once
 - `SetTTS(enabled)` - Enable text-to-speech
 - `AddEmbed(embed)` - Attach rich embed
 - `AddPoll(poll)` - Attach interactive poll
@@ -123,10 +140,13 @@ For interactive features requiring user input detection, consider using a Discor
 - `Delete()` - Delete message
 - `Async(trace)` - Process HTTP response with optional debug traces
 - `Processed()` - Check if request completed
+- `Clear()` - Clear all webhook data and reset to initial state
+- `Destroy()` - Destroy webhook object and clean up all resources. Use if the webhook created but not executed
 
 ### DiscordEmbed Methods
 - `SetTitle(title)` - Set embed title
 - `SetDescription(description)` - Set main text
+- `SetFields(fields)` - Set multiple fields at once using an array
 - `SetColor(color)` - Set sidebar color
 - `SetAuthor(name, icon_url, url)` - Set author info
 - `SetURL(url)` - Make title clickable
@@ -138,7 +158,7 @@ For interactive features requiring user input detection, consider using a Discor
 - `AddField(name, value, inline)` - Add data field
 
 ### DiscordPoll Methods
-- `AddAnswer(text, emoji)` - Add poll option with optional emoji
+- `AddAnswer(text, emoji)` - Add poll option with optional emoji (supports both emoji names as strings and emoji IDs as numbers)
 
 ## Related links
 - [Webhook Documentation](https://discord.com/developers/docs/resources/webhook)
