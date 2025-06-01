@@ -141,6 +141,7 @@ For interactive features requiring user input detection, consider using a Discor
 - `AddAnswer(text, emoji)` - Add poll option with optional emoji
 
 ## Related links
-- [Webhook Resource | Documentation | Discord Developer Portal](https://discord.com/developers/docs/resources/webhook)
-- [Introduction - Discord Webhooks Guide](https://birdie0.github.io/discord-webhooks-guide/index.html)
+- [Webhook Documentation](https://discord.com/developers/docs/resources/webhook)
+- [Discord Webhooks Guide](https://birdie0.github.io/discord-webhooks-guide/index.html)
 - [Embed Visualizer](https://leovoel.github.io/embed-visualizer/)
+- [Discord.py](https://discordpy.readthedocs.io/en/stable/)
