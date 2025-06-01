@@ -1,4 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub release](https://img.shields.io/github/v/release/Kruger0/GMHook)](https://github.com/Kruger0/GMHook/releases)
+[![GitHub stars](https://img.shields.io/github/stars/Kruger0/GMHook?style=social)](https://github.com/Kruger0/GMHook/stargazers)
 <div align="center">
   <img src="https://github.com/user-attachments/assets/d29423cd-4bb0-44e0-b8ec-814621924429" alt="GMHook Icon" width="256">
   <h1>GMHook 2.0.0</h1>
