@@ -1,5 +1,9 @@
-# <h1 align="center">GMHook 1.0.0</h1>
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/d29423cd-4bb0-44e0-b8ec-814621924429" alt="GMHook Icon" width="256">
+  <h1>GMHook 1.0.0</h1>
+</div>
 GMHook is a Discord Webhook integration system made for GameMaker, implemented with complete message, embed, file and poll support
+
 
 ## How to use!
 1. Create a Discord Webhook in your server channel by going to **Edit channel** → **Integrations** → **Webhooks** → **Create Webhook**.
