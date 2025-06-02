@@ -1,6 +1,6 @@
 [![GitHub license](https://img.shields.io/github/license/Kruger0/GMHook)](https://github.com/Kruger0/GMHook/blob/main/LICENSE)
 [![GitHub release](https://img.shields.io/github/v/release/Kruger0/GMHook)](https://github.com/Kruger0/GMHook/releases)
-[![GameMaker](https://img.shields.io/badge/GameMaker-2025.13+-blue?logo=gamemaker)](https://gamemaker.io/)
+[![GameMaker](https://img.shields.io/badge/GameMaker-2024.13+-blue?logo=gamemaker)](https://gamemaker.io/)
 [![Discord API](https://img.shields.io/badge/Discord-API%20v10-5865F2?logo=discord&logoColor=white)](https://discord.com/developers/docs)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Kruger0/GMHook)](https://github.com/Kruger0/GMHook/commits)
 <div align="center">
