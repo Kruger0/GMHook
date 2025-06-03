@@ -18,21 +18,22 @@ function DiscordWebhook(url) constructor {
     message_id  = undefined;
     request_id  = undefined;
     processed   = false;
+    boundary    = sha1_string_utf8(date_datetime_string(date_current_datetime()));
     
-    ///@desc Internal trace function for debug messages
-    ///@arg {String} _msg The message to trace
+    ///@desc Internal trace function for debug messages.
+    ///@arg {String} _msg The message to trace.
     ///@ignore
     static __Trace = function(_msg) {
         show_debug_message($"[GMHook] - {_msg}");
     }
     
-    ///@desc Creates the multipart form data body for the HTTP request
-    ///@return {Buffer} The buffer containing the request body
+    ///@desc Creates the multipart form data body for the HTTP request.
+    ///@return {Buffer} The buffer containing the request body.
     ///@ignore
     static __CreateBody = function() {
-        var _buffer = buffer_create(1, buffer_grow, 1);
+        var _buffer = buffer_create(1024, buffer_grow, 1);        
         var _body = ""+
-        $"--boundary\r\n"+
+        $"--{boundary}\r\n"+
         "Content-Disposition: form-data; name=\"payload_json\"\r\n\r\n"+
         json_stringify(payload, true) + "\r\n";
         buffer_write(_buffer, buffer_text, _body);
@@ -40,7 +41,8 @@ function DiscordWebhook(url) constructor {
         for (var i = 0; i < array_length(files); i++) {
             var _file = files[i].file;
             var _data = files[i].data;
-            var _content = $"--boundary\r\nContent-Disposition: form-data; name=\"file_{i}\"; filename=\"{_file}\"\r\n\r\n"
+            var _content = $"--{boundary}\r\n"+
+            $"Content-Disposition: form-data; name=\"file_{i}\"; filename=\"{_file}\"\r\n\r\n";
             buffer_write(_buffer, buffer_text, _content);
             buffer_copy(_data, 0, buffer_get_size(_data), _buffer, buffer_tell(_buffer));
             buffer_seek(_buffer, buffer_seek_relative, buffer_get_size(_data));
@@ -48,17 +50,18 @@ function DiscordWebhook(url) constructor {
             buffer_delete(_data);
         }        
         // Finish message
-        buffer_write(_buffer, buffer_text, $"\r\n--boundary--");
+        buffer_write(_buffer, buffer_text, $"--{boundary}--");
         return _buffer;
     }
     
     ///@desc Creates the HTTP headers for the Discord API request
-    ///@return {DsMap} The header map for the request
+    ///@arg {Buffer} body The body buffer to get the content length.
+    ///@return {DsMap} The header map for the request.
     ///@ignore
     static __CreateHeader = function() {
         var _header = ds_map_create();
         _header[? "Host"] = "discord.com";
-        _header[? "Content-Type"] = "multipart/form-data; boundary=boundary";
+        _header[? "Content-Type"] = $"multipart/form-data; boundary={boundary}";
         return _header;
     }
     #endregion
@@ -427,3 +430,4 @@ function DiscordPoll(text, duration = 24, multiselect = false) constructor {
         return self;
     }
 }
+
