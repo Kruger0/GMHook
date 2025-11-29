@@ -5,7 +5,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/Kruger0/GMHook)](https://github.com/Kruger0/GMHook/commits)
 <div align="center">
   <img src="https://github.com/user-attachments/assets/d29423cd-4bb0-44e0-b8ec-814621924429" alt="GMHook Icon" width="256">
-  <h1>GMHook 2.0.0</h1>
+  <h1>GMHook 2.0.1</h1>
 </div>
 GMHook is a Discord Webhook integration system made for GameMaker, implemented with complete message, embed, file and poll support
 
