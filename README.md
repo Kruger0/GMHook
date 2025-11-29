@@ -5,7 +5,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/Kruger0/GMHook)](https://github.com/Kruger0/GMHook/commits)
 <div align="center">
   <img src="https://github.com/user-attachments/assets/d29423cd-4bb0-44e0-b8ec-814621924429" alt="GMHook Icon" width="256">
-  <h1>GMHook 2.0.1</h1>
+  <h1>GMHook 2.1.0</h1>
 </div>
 GMHook is a Discord Webhook integration system made for GameMaker, implemented with complete message, embed, file and poll support
 
@@ -133,7 +133,10 @@ For interactive features requiring user input detection, consider using a Discor
 - `SetURL(url)` - Change the webhook URL after creation
 - `SetUser(username, avatar_url)` - Set custom webhook identity
 - `SetContent(content)` - Set message text content
+- `SetThread(thread_name)` - Set the name of the thread to be created (Forum Channels)
+- `SetFlags(suppress_embeds, suppress_notifications)` - Set flags to hide embeds or send silently
 - `SetPayload(payload)` - Set raw payload as a struct or a valid JSON string
+- `GetPayload()` - Get the current payload struct
 - `SetEmbeds(embeds)` - Set an array of embeds at once
 - `SetTTS(enabled)` - Enable text-to-speech
 - `AddEmbed(embed)` - Attach rich embed
@@ -153,7 +156,7 @@ For interactive features requiring user input detection, consider using a Discor
 - `SetDescription(description)` - Set main text
 - `SetFields(fields)` - Set multiple fields at once using an array
 - `SetColor(color)` - Set sidebar color
-- `SetAuthor(name, icon_url, url)` - Set author info
+- `SetAuthor(name, url, icon_url)` - Set author info
 - `SetURL(url)` - Make title clickable
 - `SetImageURL(url)` - Set large image from URL
 - `SetImageFile(filename)` - Set large image from attached file
