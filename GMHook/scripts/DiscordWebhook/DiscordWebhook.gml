@@ -9,8 +9,9 @@
 
 ///@desc Instantiates a Webhook object that can be configured and executed.
 ///@arg {String} url The webhook url as a string
+///@return {DiscordWebhook} A new webhook instance.
 function DiscordWebhook(url) constructor {
-
+    
     #region Private
     self.url    = url;
     payload     = {};
@@ -31,11 +32,11 @@ function DiscordWebhook(url) constructor {
     ///@return {Buffer} The buffer containing the request body.
     ///@ignore
     static __CreateBody = function() {
-        var _buffer = buffer_create(1024, buffer_grow, 1);        
+        var _buffer = buffer_create(1024, buffer_grow, 1);
         var _body = ""+
         $"--{boundary}\r\n"+
         "Content-Disposition: form-data; name=\"payload_json\"\r\n\r\n"+
-        json_stringify(payload, true) + "\r\n";
+        json_stringify(payload) + "\r\n";
         buffer_write(_buffer, buffer_text, _body);
         // Process files
         for (var i = 0; i < array_length(files); i++) {
@@ -48,7 +49,7 @@ function DiscordWebhook(url) constructor {
             buffer_seek(_buffer, buffer_seek_relative, buffer_get_size(_data));
             buffer_write(_buffer, buffer_text, "\r\n");
             buffer_delete(_data);
-        }        
+        }
         // Finish message
         buffer_write(_buffer, buffer_text, $"--{boundary}--");
         return _buffer;
@@ -65,7 +66,7 @@ function DiscordWebhook(url) constructor {
         return _header;
     }
     #endregion
-
+    
     ///@desc Sets or changes the webhook URL.
     ///@arg {String} url The new webhook URL as a string.
     ///@return {Struct.DiscordWebhook} Returns self for method chaining.
@@ -112,6 +113,12 @@ function DiscordWebhook(url) constructor {
             __Trace($"Invalid payload: {payload}");
         }        
         return self;
+    }
+    
+    ///@desc Get the entire payload for the webhook as a struct.
+    ///@return {Struct} Returns the payload struct.
+    static GetPayload = function() {
+        return payload;
     }
     
     ///@desc Sets the entire embed array for the webhook.
@@ -231,9 +238,9 @@ function DiscordWebhook(url) constructor {
     }
     
     ///@desc Processes the async HTTP response from Discord API.
-    ///@arg {Bool} trace Whether to output trace messages for status codes.
+    ///@arg {Bool} [trace] Whether to output trace messages for status codes. Defaults to false
     ///@return {Struct.DiscordWebhook} Returns self for method chaining.
-    static Async = function(trace) {
+    static Async = function(trace = false) {
         var _async = json_parse(json_encode(async_load));
         if (_async[$ "id"] != request_id) return self;
         var _http_status = _async[$ "http_status"];
@@ -287,147 +294,3 @@ function DiscordWebhook(url) constructor {
         url = undefined;
     }
 }
-
-///@desc Creates a Discord embed object for rich message formatting.
-///@return {DiscordEmbed} A new embed instance.
-function DiscordEmbed() constructor {
-
-    ///@desc Adds a field to the embed.
-    ///@arg {String} name The field name/title.
-    ///@arg {String} value The field content.
-    ///@arg {Bool} inline Whether the field should be displayed inline. Defaults to false.
-    ///@return {Struct.DiscordEmbed} Returns self for method chaining.
-    static AddField = function(name, value, inline = false) {
-        self[$ "fields"] ??= [];
-        array_push(fields, {name, value, inline});
-        return self;
-    }
-    
-    ///@desc Sets multiple fields at once.
-    ///@arg {Array} fields Array of field objects {name, value, inline}.
-    ///@return {Struct.DiscordEmbed} Returns self for method chaining.
-    static SetFields = function(fields) {
-        self.fields = variable_clone(fields);
-        return self;
-    }
-    
-    ///@desc Sets the embed title.
-    ///@arg {String} title The embed title text.
-    ///@return {Struct.DiscordEmbed} Returns self for method chaining.
-    static SetTitle = function(title) {
-        self.title = title;
-        return self;
-    }
-    
-    ///@desc Sets the embed description.
-    ///@arg {String} description The embed description text.
-    ///@return {Struct.DiscordEmbed} Returns self for method chaining.
-    static SetDescription = function(description) {
-        self.description = description;
-        return self;
-    }
-    
-    ///@desc Sets the embed color (left border color).
-    ///@arg {Real} color The color value (BGR format will be converted to RGB).
-    ///@return {Struct.DiscordEmbed} Returns self for method chaining.
-    static SetColor = function(color) {
-        self.color = ((color & 0xFF) << 16) | (color & 0xFF00) | ((color & 0xFF0000) >> 16);
-        return self;
-    }
-    
-    ///@desc Sets the embed author information.
-    ///@arg {String} name The author name.
-    ///@arg {String} icon_url The author icon URL.
-    ///@arg {String} url The author URL (makes name clickable).
-    ///@return {Struct.DiscordEmbed} Returns self for method chaining.
-    static SetAuthor = function(name, icon_url = "", url = "") {
-        author = {name, icon_url, url};
-        return self;
-    }
-    
-    ///@desc Sets the embed URL (makes title clickable).
-    ///@arg {String} url The URL to link to.
-    ///@return {Struct.DiscordEmbed} Returns self for method chaining.
-    static SetURL = function(url) {
-        self.url = url;
-        return self;
-    }
-    
-    ///@desc Sets the embed image from a URL.
-    ///@arg {String} url The image URL.
-    ///@return {Struct.DiscordEmbed} Returns self for method chaining.
-    static SetImageURL = function(url) {
-        image = {url};
-        return self;
-    }
-    
-    ///@desc Sets the embed image from an attached file.
-    ///@arg {String} filename The filename of the attached file.
-    ///@return {Struct.DiscordEmbed} Returns self for method chaining.
-    static SetImageFile = function(filename) {
-        image = {url : "attachment://"+filename};
-        return self;
-    }
-    
-    ///@desc Sets the embed thumbnail image.
-    ///@arg {String} url The thumbnail image URL.
-    ///@return {Struct.DiscordEmbed} Returns self for method chaining.
-    static SetThumbnail = function(url) {
-        thumbnail = {url};
-        return self;
-    }
-    
-    ///@desc Sets the embed footer information.
-    ///@arg {String} text The footer text.
-    ///@arg {String} icon_url The footer icon URL.
-    ///@return {Struct.DiscordEmbed} Returns self for method chaining.
-    static SetFooter = function(text, icon_url = "") {
-        footer = {text, icon_url};
-        return self;
-    }
-    
-    ///@desc Sets the embed timestamp.
-    ///@arg {String} timestamp The timestamp in ISO 8601 format.
-    ///@return {Struct.DiscordEmbed} Returns self for method chaining.
-    static SetTimestamp = function(timestamp) {
-        self.timestamp = timestamp;
-        return self;
-    }
-}
-
-///@desc Creates a Discord poll object for interactive voting.
-///@arg {String} text The poll question text.
-///@arg {Real} duration The poll duration in hours (1-768). Defaults to 24.
-///@arg {Bool} multiselect Whether users can select multiple answers. Defaults to false.
-///@return {DiscordPoll} A new poll instance.
-function DiscordPoll(text, duration = 24, multiselect = false) constructor {
-	
-    #region Private
-    question            = {text};
-    self.duration       = clamp(duration, 1, 768);
-    allow_multiselect   = multiselect;
-    answers             = [];
-    #endregion
-
-    ///@desc Adds an answer option to the poll.
-    ///@arg {String} text The answer text.
-    ///@arg {String|Real} emoji The emoji for the answer (name string or ID number).
-    ///@return {Struct.DiscordPoll} Returns self for method chaining.
-    static AddAnswer = function(text, emoji = undefined) {
-        var _answer = {
-            poll_media : {text},
-        }
-        if (emoji != undefined) {
-            _answer.poll_media.emoji = {};
-
-            if (is_numeric(emoji)) {
-                _answer.poll_media.emoji.id = string(emoji);
-            } else {
-                _answer.poll_media.emoji.name = emoji;
-            }
-        }
-        array_push(answers, _answer);
-        return self;
-    }
-}
-

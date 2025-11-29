@@ -2,30 +2,35 @@
   "$GMProject":"v1",
   "%Name":"GMHook",
   "AudioGroups":[
-    {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
   "configs":{
     "children":[],
     "name":"Default",
   },
   "defaultScriptType":1,
-  "Folders":[],
+  "Folders":[
+    {"$GMFolder":"","%Name":"GMHook","folderPath":"folders/GMHook.yy","name":"GMHook","resourceType":"GMFolder","resourceVersion":"2.0",},
+  ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.13.1.193",
+    "IDEVersion":"2024.14.1.210",
   },
   "name":"GMHook",
   "resources":[
-    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
-    {"id":{"name":"GMHook","path":"scripts/GMHook/GMHook.yy",},},
+    {"id":{"name":"obj_demo","path":"objects/obj_demo/obj_demo.yy",},},
+    {"id":{"name":"rm_demo","path":"rooms/rm_demo/rm_demo.yy",},},
+    {"id":{"name":"DiscordEmbed","path":"scripts/DiscordEmbed/DiscordEmbed.yy",},},
+    {"id":{"name":"DiscordPool","path":"scripts/DiscordPool/DiscordPool.yy",},},
+    {"id":{"name":"DiscordWebhook","path":"scripts/DiscordWebhook/DiscordWebhook.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"roomId":{"name":"rm_demo","path":"rooms/rm_demo/rm_demo.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
