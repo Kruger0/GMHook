@@ -171,3 +171,4 @@ For interactive features requiring user input detection, consider using a Discor
 - [Embed Visualizer](https://leovoel.github.io/embed-visualizer/)
 - [Discord.py](https://discordpy.readthedocs.io/en/stable/)
 - [Embed Builder](https://glitchii.github.io/embedbuilder/)
+- [Discohook](https://discohook.org/)
