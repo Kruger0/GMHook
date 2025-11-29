@@ -48,7 +48,6 @@ function DiscordWebhook(url) constructor {
             buffer_copy(_data, 0, buffer_get_size(_data), _buffer, buffer_tell(_buffer));
             buffer_seek(_buffer, buffer_seek_relative, buffer_get_size(_data));
             buffer_write(_buffer, buffer_text, "\r\n");
-            buffer_delete(_data);
         }
         // Finish message
         buffer_write(_buffer, buffer_text, $"--{boundary}--");
@@ -135,7 +134,7 @@ function DiscordWebhook(url) constructor {
             };
         } else {
             __Trace($"Invalid payload: {payload}");
-        }        
+        }
         return self;
     }
     

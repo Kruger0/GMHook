@@ -11,6 +11,7 @@
   "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"GMHook","folderPath":"folders/GMHook.yy","name":"GMHook","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Private","folderPath":"folders/GMHook/Private.yy","name":"Private","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[],
@@ -23,6 +24,7 @@
   "resources":[
     {"id":{"name":"obj_demo","path":"objects/obj_demo/obj_demo.yy",},},
     {"id":{"name":"rm_demo","path":"rooms/rm_demo/rm_demo.yy",},},
+    {"id":{"name":"__GMHook","path":"scripts/__GMHook/__GMHook.yy",},},
     {"id":{"name":"DiscordEmbed","path":"scripts/DiscordEmbed/DiscordEmbed.yy",},},
     {"id":{"name":"DiscordPool","path":"scripts/DiscordPool/DiscordPool.yy",},},
     {"id":{"name":"DiscordWebhook","path":"scripts/DiscordWebhook/DiscordWebhook.yy",},},
