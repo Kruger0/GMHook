@@ -12,6 +12,7 @@
   "Folders":[
     {"$GMFolder":"","%Name":"GMHook","folderPath":"folders/GMHook.yy","name":"GMHook","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Private","folderPath":"folders/GMHook/Private.yy","name":"Private","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Demo","folderPath":"folders/Demo.yy","name":"Demo","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[],

@@ -10,8 +10,8 @@
   "name":"obj_demo",
   "overriddenProperties":[],
   "parent":{
-    "name":"GMHook",
-    "path":"GMHook.yyp",
+    "name":"Demo",
+    "path":"folders/Demo.yy",
   },
   "parentObjectId":null,
   "persistent":false,
