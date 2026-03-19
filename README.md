@@ -15,7 +15,7 @@ GMHook is a Discord Webhook integration system made for GameMaker, implemented w
    Configure the name, avatar and channel, then copy the webhook URL.
    
 2. Create a webhook instance and start sending messages:
-   ```gml
+   ```js
    // Create webhook instance
    webhook = new DiscordWebhook("YOUR_WEBHOOK_URL");
    
@@ -25,7 +25,7 @@ GMHook is a Discord Webhook integration system made for GameMaker, implemented w
    ```
 
 3. Create rich embeds for better presentation:
-   ```gml
+   ```js
    // Create an embed
    embed = new DiscordEmbed();
    embed.SetTitle("Game Stats")
@@ -40,7 +40,7 @@ GMHook is a Discord Webhook integration system made for GameMaker, implemented w
    ```
 
 4. Call the function `webhook.Async(trace)` in an Async HTTP event to get the message ID, in order to use features like `Processed()`, `Edit()` or `Delete()`:
-   ```gml
+   ```js
    // Async HTTP Event
    webhook.Async(true);
 
@@ -54,7 +54,7 @@ GMHook is a Discord Webhook integration system made for GameMaker, implemented w
 
 ### File Uploads
 Send screenshots, logs or any file directly to Discord:
-```gml
+```js
 // Send a file
 webhook.SetContent("Check out this screenshot!")
        .AddFile("screenshot.png")
@@ -75,7 +75,7 @@ webhook.AddEmbed(embed);
 
 ### Interactive Polls
 Create polls for community engagement:
-```gml
+```js
 // Create a poll
 poll = new DiscordPoll("What's your favorite feature?", 24, false);
 poll.AddAnswer("Embeds", "📋")
@@ -88,7 +88,7 @@ webhook.AddPoll(poll)
 
 ### Message Management
 Edit or delete messages after sending:
-```gml
+```js
 // After successful send, you can edit the message
 webhook.SetContent("Updated message!")
        .Edit();
@@ -99,7 +99,7 @@ webhook.Delete();
 
 ### Custom User Identity
 Make your webhook appear as different users:
-```gml
+```js
 webhook.SetUser("GameBot", "https://example.com/bot_avatar.png")
        .SetContent("Message from custom bot!")
        .Execute();
@@ -107,7 +107,7 @@ webhook.SetUser("GameBot", "https://example.com/bot_avatar.png")
 
 ### Batch Operations
 Set multiple embeds or fields at once:
-```gml
+```js
 // Set multiple embeds at once
 embeds_array = [embed1, embed2, embed3];
 webhook.SetEmbeds(embeds_array);
